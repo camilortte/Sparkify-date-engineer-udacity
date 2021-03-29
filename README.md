@@ -11,7 +11,7 @@ They'd like a data engineer to create a Postgres database with tables designed t
 
 This data modeling has as goal to organize and structure the songs that are lisetineng, it allows to easly query this information using de SQL query languaje
 
-## Database schema desing
+## Database schema design
 
 This database is design to save the Songs, users, artis data, and with this relationship save the songs that are listiening by the users.
 
