@@ -1,3 +1,7 @@
+"""
+This moudel generate a ER diagram for the sparkifydb
+"""
+
 from sqlalchemy_schemadisplay import create_schema_graph
 from sqlalchemy import MetaData
 
