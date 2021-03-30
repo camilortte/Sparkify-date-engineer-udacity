@@ -54,9 +54,6 @@ def process_log_file(cur, filepath):
     # filter by NextSong action
     df = df[ (df.page == "NextSong") & (df.userId.notnull())]
 
-    # Remove duplicates
-    df = df.drop_duplicates(subset=['userId'])
-
     # Rename columns
     df.rename(columns={'userId' :'user_id', 'firstName': 'first_name', 'lastName': 'last_name'}, inplace=True)
 
