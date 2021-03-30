@@ -54,14 +54,15 @@ CREATE TABLE IF NOT EXISTS time (
 songplay_table_create = ("""
 CREATE TABLE IF NOT EXISTS songplays (
   songplay_id SERIAL PRIMARY KEY, 
-  start_time TIMESTAMP, 
-  user_id INTEGER, 
+  start_time TIMESTAMP NOT NULL, 
+  user_id INTEGER NOT NULL, 
   level VARCHAR, 
   song_id VARCHAR, 
   artist_id VARCHAR, 
   session_id INTEGER, 
   location VARCHAR, 
   usert_agent VARCHAR,
+
   CONSTRAINT fk_start_time
    FOREIGN KEY(start_time) 
       REFERENCES time(start_time)
@@ -70,7 +71,7 @@ CREATE TABLE IF NOT EXISTS songplays (
   CONSTRAINT fk_user_id
    FOREIGN KEY(user_id) 
       REFERENCES users(user_id)
-      ON DELETE SET NULL,
+      ON DELETE CASCADE,
   
   CONSTRAINT fk_artist_id
    FOREIGN KEY(artist_id) 

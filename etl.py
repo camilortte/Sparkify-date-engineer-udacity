@@ -6,6 +6,19 @@ from sql_queries import *
 
 
 def process_song_file(cur, filepath):
+    """
+    This functions processes a JSON file with song information, it extracts the artis information and the song data
+    information.
+    
+
+    INPUTS:
+    * cur the cursor variable
+    * filepath the file path to the song file
+
+    RETURNS:
+    * None
+
+    """
     # open song file
     df = pd.read_json(filepath, lines=True)
     df = df.where(pd.notnull(df), None)
@@ -20,6 +33,20 @@ def process_song_file(cur, filepath):
 
 
 def process_log_file(cur, filepath):
+    """
+    This functions processes a JSON file with song information, it extracts the users information and time information
+    information.
+    
+
+    INPUTS:
+    * cur the cursor variable
+    * filepath the file path to the song file
+
+    RETURNS:
+    * None
+
+    """
+
     # open log file
     df = pd.read_json(filepath, lines=True)
     df = df.where(pd.notnull(df), None)
@@ -56,11 +83,11 @@ def process_log_file(cur, filepath):
 
     # Remove null ids
     user_df = user_df[user_df['user_id'].notnull()]
-    user_df = user_df[user_df.user_id != '']
 
     # insert user records
     for i, row in user_df.iterrows():
-        cur.execute(user_table_insert, row)
+        if row.user_id != '' and row.user_id != None:
+          cur.execute(user_table_insert, row)
 
     # insert songplay records
     for index, row in df.iterrows():
