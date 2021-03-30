@@ -15,7 +15,7 @@ This data modeling has as goal to organize and structure the songs that are lise
 
 This database is design to save the Songs, users, artis data, and with this relationship save the songs that are listiening by the users.
 
-![Database schema](database_schema.png)
+![Database schema](sparkifydb_erd.png)
 
 Note: This database use Foreign keys with constraints. 
 
@@ -32,6 +32,7 @@ $ sudo -u postgres createdb studentdb -O student -W -h 127.0.0.1
 ### Run scripts
 ```
 pipenv shell
+pip install -r requirements.txt
 python create_tables.py 
 python etl.py
 ```
@@ -42,3 +43,7 @@ pipenv shell
 jupyter-lab
 ```
 
+## Generate ER Diagram
+```
+python generate_schema.py
+```
